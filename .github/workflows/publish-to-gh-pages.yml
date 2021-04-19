@@ -24,4 +24,4 @@ jobs:
       run: npm run build
       
     - name: Publish to GitHub Pages 🎉️
-      run: npm run deploy
+      run: NODE_DEBUG=gh-pages npm run deploy
