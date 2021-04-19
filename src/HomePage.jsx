@@ -73,6 +73,10 @@ export default function HomePage() {
         case 1:
             renderedCard = <AboutMe />;
             break;
+
+        default:
+            renderedCard = null;
+            break;
     }
 
     return (
