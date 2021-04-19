@@ -1,0 +1,59 @@
+.page {
+    background-color: lavenderblush;
+    min-height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+}
+
+.avatar-img {
+    display: block;
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.divider-line {
+    /* Kita memanfaatkan sifat dari flexbox yang dapat mengembang (stretch) */
+    min-width: 1px;
+    min-height: 1px;
+    background-color: rgb(0 0 0 / 0.1);
+    margin: 0 2rem;
+}
+
+.card {
+    padding: 2rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 0.1);
+}
+
+.card h1 {
+    margin: 0;
+}
+
+.card p {
+    margin: 0;
+}
+
+.card .divider-line {
+    margin: 1rem 0;
+}
+
+.link {
+    display: block;
+    padding: 1rem 2rem;
+    
+    text-decoration: none;
+    color: currentColor;
+    transition: color 0.25s;
+}
+.link:hover {
+    color: blue;
+}

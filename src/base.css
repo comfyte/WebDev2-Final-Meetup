@@ -1,0 +1,18 @@
+@import url("https://rsms.me/inter/inter.css");
+
+html {
+    font-family: "Inter", sans-serif;
+    box-sizing: border-box;
+}
+
+*, ::before, ::after {
+    box-sizing: inherit;
+}
+
+html, body {
+    margin: 0;
+}
+
+#root {
+    height: 100vh;
+}
