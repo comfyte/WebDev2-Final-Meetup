@@ -4,10 +4,10 @@ import AboutMe from "./cards/AboutMe";
 
 function Link(props) {
     // Contoh penerapan "object destructuring" di JavaScript
-    const { children, onClick } = props;
+    const { children, onClick, linkRef } = props;
 
     return (
-        <a href="#0" className="card link" onClick={onClick}>
+        <a href="#0" className="card link" onClick={onClick} ref={linkRef}>
             {children} &rarr;
         </a>
     );
@@ -15,9 +15,12 @@ function Link(props) {
 
 export default function HomePage() {
     const [currentScreen, setCurrentScreen] = useState(0);
+    
+    const triggerElementPos = useRef();
 
     function changeScreenTo(event, destination) {
         event.preventDefault();
+        triggerElementPos.current = event.target.getBoundingClientRect();
         setCurrentScreen(destination);
     }
 
@@ -60,24 +63,60 @@ export default function HomePage() {
         lastProfileWrapperPosition.current = currentPosition;
     }, [currentScreen]);
 
+    const cardRef = useRef();
+
     let renderedCard;
     switch (currentScreen) {
         case 0:
             renderedCard = (
                 <>
-                    <Link onClick={function(event) { changeScreenTo(event, 1); }}>About me</Link>
+                    <Link onClick={function(event) { changeScreenTo(event, 1); }} linkRef={cardRef}>About me</Link>
                 </>
             );
             break;
 
         case 1:
-            renderedCard = <AboutMe />;
+            renderedCard = <AboutMe cardRef={cardRef} />;
             break;
 
         default:
             renderedCard = null;
             break;
     }
+
+    useLayoutEffect(function () {
+        if (currentScreen !== 0) {
+            const {
+                left: lastXPos,
+                top: lastYPos,
+                width: lastWidth,
+                height: lastHeight
+            } = triggerElementPos.current;
+
+            const {
+                left: currentXPos,
+                top: currentYPos,
+                width: currentWidth,
+                height: currentHeight
+            } = cardRef.current.getBoundingClientRect();
+
+            const deltaX = lastXPos - currentXPos;
+            const deltaY = lastYPos - currentYPos;
+            const deltaWidth = lastWidth / currentWidth;
+            const deltaHeight = lastHeight / currentHeight;
+
+            // console.log(lastWidth, currentWidth, triggerElement.current);
+            // console.log(triggerElement.current.getBoundingClientRect())
+
+            cardRef.current.animate([
+                { transform: `translate(${deltaX}px, ${deltaY}px) scale(${deltaWidth}, ${deltaHeight})`},
+                { transform: "none" }
+            ], {
+                duration: 500,
+                easing: "ease"
+            })
+        }
+    }, [currentScreen]);
 
     return (
         <div className="page">
