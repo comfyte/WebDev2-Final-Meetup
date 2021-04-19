@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,6 +22,11 @@ jobs:
       
     - name: Build source files
       run: npm run build
+
+    - name: Configure git credentials for pushing
+      run: |
+        git config user.name "GitHub Pages Deploy"
+        git config user.email "github-actions@github.com"
       
     - name: Publish to GitHub Pages 🎉️
       run: npm run deploy
