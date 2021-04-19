@@ -17,7 +17,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d build -u 'GitHub Pages Deploy <github-actions@github.com>'",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
