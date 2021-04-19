@@ -24,4 +24,7 @@ jobs:
       run: npm run build
       
     - name: Publish to GitHub Pages 🎉️
-      run: NODE_DEBUG=gh-pages npm run deploy
+      uses: peaceiris/actions-gh-pages@v3.7.3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build
