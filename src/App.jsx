@@ -9,7 +9,7 @@ import Links from "./screens/Links";
 import AboutMe from "./screens/AboutMe";
 import Socials from "./screens/Socials";
 
-export default function HomePage() {
+export default function App() {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     // Definisikan tampilan-tampilan screen di sini
@@ -41,15 +41,20 @@ export default function HomePage() {
             <div className="container">
                 <section>
                     {currentIndex !== 0 && (
-                        <a href="#0" onClick={goBackToHome} className="go-back">&larr; Back</a>
+                        <a href="#0" onClick={goBackToHome} className="go-back">
+                            &larr; Back
+                        </a>
                     )}
                     <div className="profile-wrapper" ref={profileWrapperRef}>
                         <img src={avatarSrc} alt="Avatar" className="avatar-img" />
+                        
                         <h1>Nama Kamu</h1>
                         <p>Deskripsi apa pun di sini</p>
                     </div>
                 </section>
+
                 <div className="divider-line" ref={dividerLineRef} />
+
                 <section>
                     {screens[currentIndex]}
                 </section>
