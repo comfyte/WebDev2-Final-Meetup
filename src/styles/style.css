@@ -1,0 +1,119 @@
+/* * {
+    outline: 1px solid rgb(255 0 0 / 0.25);
+} */
+
+.page {
+    background-color: lavenderblush;
+    min-height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+}
+
+.profile-wrapper {
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-wrapper .avatar-img {
+    display: block;
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+    border-radius: 50%;
+
+    margin-bottom: 1rem;
+}
+.profile-wrapper h1 {
+    margin: 0;
+    margin-bottom: 0.75rem;
+}
+.profile-wrapper p {
+    margin: 0;
+}
+.go-back {
+    display: block;
+    margin-bottom: 0.8rem;
+
+    text-decoration: none;
+    color: currentColor;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    border-radius: 0.25rem;
+    transition: background-color 0.1s;
+    animation: card-entrance 0.5s cubic-bezier(0, 0, 0, 1);
+}
+.go-back:hover {
+    background-color: rgb(0 0 0 / 0.1);
+}
+.go-back:active {
+    background-color: rgb(0 0 0 / 0.2);
+}
+
+.divider-line {
+    /* Kita memanfaatkan sifat dari flexbox yang dapat mengembang (stretch) */
+    min-width: 1px;
+    min-height: 1px;
+    background-color: rgb(0 0 0 / 0.1);
+    margin: 0 2rem;
+}
+
+.card {
+    padding: 2rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 0.1);
+    transform-origin: top left;
+    animation: card-entrance 0.5s cubic-bezier(0, 0, 0, 1) backwards;
+}
+@keyframes card-entrance {
+    from {
+        transform: translateX(20%);
+        opacity: 0;
+    }
+}
+.card h1 {
+    margin: 0;
+}
+.card p {
+    margin: 0;
+}
+.card .divider-line {
+    margin: 1rem 0;
+}
+
+.link {
+    display: flex;
+    padding: 0.8rem 1.5rem;
+    
+    text-decoration: none;
+    color: currentColor;
+    transition: color 0.25s;
+}
+.link + .link {
+    margin-top: 0.75rem;
+}
+.link span {
+    display: block;
+}
+.link span:first-child {
+    flex-grow: 1;
+}
+.link span:last-child {
+    margin-left: 0.5rem;
+    transition: transform 0.2s;
+}
+.link:hover span:last-child {
+    transform: translateX(15%);
+}
+.link:hover {
+    color: blue;
+}
