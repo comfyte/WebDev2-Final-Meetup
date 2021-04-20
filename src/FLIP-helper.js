@@ -21,10 +21,6 @@ export function useFLIP(dependencies) {
         const currentBoundingClientRect = currentElementRef.current.getBoundingClientRect();
 
         if (lastBoundingClientRectRef.current) {
-            // const lastXPos = lastBoundingClientRect.current.left;
-            // const lastYPos = lastBoundingClientRect.current.top;
-            // const lastWidth = lastBoundingClientRect.current
-
             // Contoh penerapan object destructuring pada Javascript
             // yang disertai dengan renaming nama variabelnya
             const {
@@ -34,8 +30,6 @@ export function useFLIP(dependencies) {
                 height: lastHeight
             } = lastBoundingClientRectRef.current;
 
-            // const currentXPos = currentBoundingClientRect.left;
-            // const currentYPos = currentBoundingClientRect.top;
             const {
                 left: currentXPos,
                 top: currentYPos,
@@ -72,7 +66,8 @@ export function useFLIP(dependencies) {
 
             currentElementRef.current.animate(animationKeyframes, animationOptions);
         }
-    }, [...dependencies]);
+        // eslint-disable-next-line
+    }, dependencies);
 
-    return [/*lastBoundingClientRectRef, */captureLastElementPosition, currentElementRef];
+    return [captureLastElementPosition, currentElementRef];
 }

@@ -1,15 +1,22 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useState } from "react";
+import { useFLIP } from "./FLIP-helper";
 
+// Gambar profil / avatar
+import avatarSrc from "./avatar.jpg";
+
+// Screens
 import Links from "./screens/Links";
 import AboutMe from "./screens/AboutMe";
-import { useFLIP } from "./FLIP-helper";
+import Socials from "./screens/Socials";
 
 export default function HomePage() {
     const [currentIndex, setCurrentIndex] = useState(0);
 
+    // Definisikan tampilan-tampilan screen di sini
     const screens = [
         <Links changeScreenFunc={changeScreenIndex} />,
-        <AboutMe />
+        <AboutMe />,
+        <Socials />
     ];
     
     function changeScreenIndex(event, destination) {
@@ -29,17 +36,15 @@ export default function HomePage() {
     const [captureProfileWrapperPosition, profileWrapperRef] = useFLIP([currentIndex]);
     const [captureDividerLinePosition, dividerLineRef] = useFLIP([currentIndex]);
 
-
-
     return (
         <div className="page">
             <div className="container">
                 <section>
                     {currentIndex !== 0 && (
-                        <a href="#0" onClick={goBackToHome} className="go-back">&larr; Kembali</a>
+                        <a href="#0" onClick={goBackToHome} className="go-back">&larr; Back</a>
                     )}
                     <div className="profile-wrapper" ref={profileWrapperRef}>
-                        <img src="https://source.unsplash.com/random" alt="Avatar" className="avatar-img" />
+                        <img src={avatarSrc} alt="Avatar" className="avatar-img" />
                         <h1>Nama Kamu</h1>
                         <p>Deskripsi apa pun di sini</p>
                     </div>

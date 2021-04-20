@@ -8,16 +8,8 @@ export default function Links(props) {
             targetIndex: 1
         },
         {
-            name: "Lorem ipsum",
-            targetIndex: 1
-        },
-        {
-            name: "Dolor sit amet",
-            targetIndex: 1
-        },
-        {
             name: "Connect with me",
-            targetIndex: 1
+            targetIndex: 2
         }
     ];
 
@@ -31,6 +23,7 @@ export default function Links(props) {
             style={{
                 animationDelay: (i * 100) + "ms"
             }}
+            key={item.name}
         >
             <span>{item.name}</span>
             <span>&rarr;</span>
